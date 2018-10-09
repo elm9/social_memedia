@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // index route loads create.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/create.handlebars"));
+    res.render(path.join(__dirname, "../views/create.handlebars"));
   });
 
   // // cms route loads feed.html

@@ -6,6 +6,9 @@
 // =============================================================
 var express = require("express");
 var exphbs = require("express-handlebars");
+var passport = require("./config/passport");
+var boydParser = require("body-parser");
+var session = require("express-session");
 
 // Sets up the Express App
 // =============================================================
@@ -21,6 +24,9 @@ app.use(express.json());
 
 // Static directory
 app.use(express.static("public"));
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
