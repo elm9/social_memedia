@@ -14,21 +14,21 @@ module.exports = function(app) {
 
   // index route loads create.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/create.html"));
+    res.sendFile(path.join(__dirname, "../views/create.handlebars"));
   });
 
-  // cms route loads feed.html
-  app.get("/feed", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/feed.html"));
-  });
+  // // cms route loads feed.html
+  // app.get("/feed", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../view/feed.html"));
+  // });
 
-  // blog route loads index.html
-  app.get("/index", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
-  });
+  // // blog route loads index.html
+  // app.get("/index", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../view/index.html"));
+  // });
 
-  app.get("/relog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/relog.html"));
-  });
+  // app.get("/relog", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/relog.html"));
+  // });
 
 };

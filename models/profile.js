@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var memedia = sequelize.define("memedia", {
+    var memedia = sequelize.define("profile", {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         username: DataTypes.STRING,
         password: DataTypes.TEXT,
+        email: DataTypes.TEXT
     });
     return memedia;
   };
