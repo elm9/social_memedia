@@ -6,17 +6,23 @@
 // =============================================================
 var express = require("express");
 var exphbs = require("express-handlebars");
+var bodyParser = require("body-parser");
+var session = require("express-session");
+var passport = require("./config/passport");
 
-// Sets up the Express App
+// Sets up the PORT
 // =============================================================
-var app = express();
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
+
 var db = require("./models");
+//Set up the Express App
+var app = express();
+
 
 //Requiring our AWS S-3
-var AWS = require(‘aws-sdk’);
+var AWS = require("aws-sdk");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -24,8 +30,10 @@ app.use(express.json());
 
 // Static directory
 app.use(express.static("public"));
-
-
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(bodyParser());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
