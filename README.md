@@ -1,8 +1,7 @@
 # social_memedia
 A full-stack social media app specifically made for sharing memes. 
 
-User Flow:
-[userflow](https://raw.githubusercontent.com/elm9/social_memedia/readme/img/20181008_143335.jpg)
+
 
 
 Have you ever found yourself looking strictly for some amusement on Twitter or Instagram, but you end up having to deal with your friends posting politically charged or incredibly personal things that disrupt from the flow of your entertainment? That's not a problem with SMM.
