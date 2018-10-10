@@ -11,6 +11,12 @@ module.exports = function(app) {
     });
   });
 
+  
+  app.post("/api/login", function(req, res) {
+    // if the username and password match an entry in the database, redirect them to the home feed. 
+    // If not alert them that their username or password is incorrect
+  });
+
   //when user name and password matches we direct user to feed.handlebars
   
  
