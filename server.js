@@ -7,7 +7,7 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 var passport = require("./config/passport");
-var boydParser = require("body-parser");
+var bodyParser = require("body-parser");
 var session = require("express-session");
 
 // Sets up the PORT
@@ -33,7 +33,7 @@ app.use(express.static("public"));
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(bodyParser());
+app.use(bodyParser);
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 

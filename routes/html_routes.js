@@ -17,6 +17,10 @@ module.exports = function(app) {
     res.render(path.join(__dirname, "../views/create.handlebars"));
   });
 
+  app.get("/register", function(req, res) {
+    res.render(path.join(__dirname, "../views/register.handlebars"));
+  });
+
   // // cms route loads feed.html
   // app.get("/feed", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../view/feed.html"));
