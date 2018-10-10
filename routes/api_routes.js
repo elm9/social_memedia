@@ -1,4 +1,5 @@
 var db = require("../models");
+var passport = require("../config/passport");
 const AWS = require("aws-sdk");
 var bucketName = 'socialmemedia';
 var bucketRegion = 'us-east-1';
