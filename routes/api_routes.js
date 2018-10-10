@@ -4,7 +4,7 @@ module.exports = function(app) {
 
 
   app.post("/api/register", function(req, res) {
-    // Create a user with the data available to us in req.body
+    // Create an Author with the data available to us in req.body
     console.log(req.body);
     db.profile.create(req.body).then(function(user) {
       res.json(user);
@@ -17,6 +17,8 @@ module.exports = function(app) {
     // If not alert them that their username or password is incorrect
   });
 
+  //when user name and password matches we direct user to feed.handlebars
+  
  
 
 };
