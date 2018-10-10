@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS memedia;
+-- DROP DATABASE IF EXISTS memedia;
 
 CREATE DATABASE memedia;
 

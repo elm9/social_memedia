@@ -21,10 +21,15 @@ module.exports = function(app) {
     res.render(path.join(__dirname, "../views/register.handlebars"));
   });
 
-  // // cms route loads feed.html
-  // app.get("/feed", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../view/feed.html"));
-  // });
+  // cms route loads feed.html
+  app.get("/feed", function(req, res) {
+    res.render(path.join(__dirname, "../views/feed.handlebars"));
+  });
+
+    // cms route loads feed.html
+    app.get("/login", function(req, res) {
+      res.render(path.join(__dirname, "../views/login.handlebars"));
+    });
 
   // // blog route loads index.html
   // app.get("/index", function(req, res) {
