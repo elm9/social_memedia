@@ -27,10 +27,10 @@ var app = express();
 const AWS = require("aws-sdk");
 const S3_BUCKET = process.env.S3_BUCKET;
 
-var credentials = new AWS.SharedIniFileCredentials({
-  profile: 'default'
-});
-AWS.config.credentials = credentials;
+// var credentials = new AWS.SharedIniFileCredentials({
+//   profile: 'default'
+// });
+// AWS.config.credentials = credentials;
 // Set the region 
 AWS.config.update({
   region: 'us-east-1'
