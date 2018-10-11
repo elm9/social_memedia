@@ -21,16 +21,16 @@
 <div class="container">
     <div class="login">
         <h1 class="whenyou">when you already</h1>
-        <form class="login-form">
+        <form action="./feed.handlebars" class="login-form">
             <div class="form-group">
-                <input class="login-input" id="username" type="text" placeholder="Enter Username Here..." />
+                <input class="login-input" id="username" type="text" placeholder="Enter Username Here..." required />
                 <div class="bottom-block"></div>
             </div>
             <div class="form-group">
-                <input class="login-input" id="password" type="password" placeholder="Enter Password Here..." />
+                <input class="login-input" id="password" type="password" placeholder="Enter Password Here..." required />
                 <div class="bottom-block"></div>
             </div>
-            <button class="sinsup-button" id="log-in">Log In</button>
+            <button type="submit" class="sinsup-button" id="log-in">Log In</button>
         </form>
         <h1 class="whenyou">made an account last time</h1>
     </div>
