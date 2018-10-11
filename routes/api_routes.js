@@ -23,37 +23,10 @@ module.exports = function (app) {
     console.log(req.body);
     db.profile.create(req.body).then(function (user) {
       res.json(user);
-      createAlbum();
+      
     });
 
-    function createAlbum(albumName) {
-      albumName = albumName.trim();
-      if (!albumName) {
-        return alert('Usernames must contain at least one non-space character.');
-      }
-      if (albumName.indexOf('/') !== -1) {
-        return alert('Usernames cannot contain slashes.');
-      }
-      var albumKey = encodeURIComponent(albumName) + '/';
-      s3.headObject({
-        Key: albumKey
-      }, function (err, data) {
-        if (!err) {
-          return alert('Username already exists.');
-        }
-        if (err.code !== 'NotFound') {
-          return alert('There was an error: ' + err.message);
-        }
-        s3.putObject({
-          Key: albumKey
-        }, function (err, data) {
-          if (err) {
-            return alert('There was an error: ' + err.message);
-          }
-          alert('Successfully created account.');
-        });
-      });
-    }
+    
   });
 
 
@@ -74,5 +47,39 @@ module.exports = function (app) {
   //when user name and password matches we direct user to feed.handlebars
 
 
+  // when you need to crate an account
+  // app.post("/api/profile", ){
+  //   function createAlbum(albumName) {
+  //     albumName = albumName.trim();
+  //     if (!albumName) {
+  //       return alert('Usernames must contain at least one non-space character.');
+  //     }
+  //     if (albumName.indexOf('/') !== -1) {
+  //       return alert('Usernames cannot contain slashes.');
+  //     }
+  //     var albumKey = encodeURIComponent(albumName) + '/';
+  //     s3.headObject({
+  //       Key: albumKey
+  //     }, function (err, data) {
+  //       if (!err) {
+  //         return alert('Username already exists.');
+  //       }
+  //       if (err.code !== 'NotFound') {
+  //         return alert('There was an error: ' + err.message);
+  //       }
+  //       s3.putObject({
+  //         Key: albumKey
+  //       }, function (err, data) {
+  //         if (err) {
+  //           return alert('There was an error: ' + err.message);
+  //         }
+  //         alert('Successfully created account.');
+  //       });
+  //     });
+  // }
+  
+  
+  
+  // }
 
 };
