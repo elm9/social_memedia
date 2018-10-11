@@ -23,31 +23,54 @@ module.exports = function (app) {
     console.log(req.body);
     db.profile.create(req.body).then(function (user) {
       res.json(user);
-      
+
     });
 
-    
+
   });
 
 
 
 
-  app.post("/api/login", passport.authenticate('local', {
-      // if the username and password match an entry in the database, redirect them to the home feed. 
-      // If not alert them that their username or password is incorrect
-      successRedirect: '/feed',
-      failureRedirect: '/login',
-      failureFlash: true
-    })
+  // app.post("/api/login", passport.authenticate('local', {
+  //     // if the username and password match an entry in the database, redirect them to the home feed. 
+  //     // If not alert them that their username or password is incorrect
+
+  //     successRedirect: '/feed',
+  //     failureRedirect: '/login',
+  //     failureFlash: true
+  //   })
+  // );
 
 
 
-  );
+  app.post("/api/login", passport.authenticate("local"), function (req, res) {
+    res.json("/feed");
+  });
 
-  
-    // app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    //   res.json("/feed");
-    // });
+
+  app.get("/api/user_data", function (req, res) {
+    if (!req.user) {
+      res.json({});
+    } else {
+      res.json({
+        email: req.user.email,
+        id: req.user.id,
+        username: req.user.username
+      });
+    }
+  });
+
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+
+
+
+  // app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  //   res.json("/feed");
+  // });
 
   //when user name and password matches we direct user to feed.handlebars
 
@@ -82,9 +105,9 @@ module.exports = function (app) {
   //       });
   //     });
   // }
-  
-  
-  
+
+
+
   // }
 
 };

@@ -5,6 +5,7 @@
 // Dependencies
 // =============================================================
 var path = require("path");
+var isMemed = require('../config/middleware/isMemed.js');
 
 // Routes
 // =============================================================
@@ -22,7 +23,7 @@ module.exports = function(app) {
   });
 
   // cms route loads feed.html
-  app.get("/feed", function(req, res) {
+  app.get("/feed", isMemed, function(req, res) {
     res.render(path.join(__dirname, "../views/feed"));
   });
 
