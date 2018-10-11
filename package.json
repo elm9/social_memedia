@@ -24,6 +24,7 @@
     "mysql2": "^1.6.1",
     "passport": "^0.4.0",
     "passport-local-sequelize": "^0.8.0",
+    "path": "^0.12.7",
     "sequelize": "^4.39.0"
   },
   "devDependencies": {},
