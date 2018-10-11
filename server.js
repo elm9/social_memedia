@@ -25,28 +25,28 @@ var app = express();
 // =============================================================
 //Requiring our AWS S-3
 const AWS = require("aws-sdk");
-const S3_BUCKET = process.env.S3_BUCKET;
+// const S3_BUCKET = process.env.S3_BUCKET;
 
-// var credentials = new AWS.SharedIniFileCredentials({
-//   profile: 'default'
+// // var credentials = new AWS.SharedIniFileCredentials({
+// //   profile: 'default'
+// // });
+// // AWS.config.credentials = credentials;
+// // Set the region 
+// AWS.config.update({
+//   region: 'us-east-1'
 // });
-// AWS.config.credentials = credentials;
-// Set the region 
-AWS.config.update({
-  region: 'us-east-1'
-});
-// Create S3 service object
-s3 = new AWS.S3({
-  apiVersion: '2006-03-01'
-});
-// Call S3 to list current buckets
-s3.listBuckets(function (err, data) {
-  if (err) {
-    console.log("Error", err);
-  } else {
-    console.log("Bucket List", data.Buckets);
-  }
-});
+// // Create S3 service object
+// s3 = new AWS.S3({
+//   apiVersion: '2006-03-01'
+// });
+// // Call S3 to list current buckets
+// s3.listBuckets(function (err, data) {
+//   if (err) {
+//     console.log("Error", err);
+//   } else {
+//     console.log("Bucket List", data.Buckets);
+//   }
+// });
 // =============================================================
 
 // Sets up the Express app to handle data parsing

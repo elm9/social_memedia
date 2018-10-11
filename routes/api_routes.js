@@ -1,6 +1,7 @@
 var db = require("../models");
 var passport = require("../config/passport");
 const AWS = require("aws-sdk");
+const S3_BUCKET = process.env.S3_BUCKET;
 var bucketName = 'socialmemedia';
 var bucketRegion = 'us-east-1';
 AWS.config.update({
@@ -19,6 +20,13 @@ module.exports = function (app) {
 
   app.post("/api/register", function (req, res) {
 
+    s3.listBuckets(function (err, data) {
+      if (err) {
+        console.log("Error", err);
+      } else {
+        console.log("Bucket List", data.Buckets);
+      }
+    });
     // Create an Author with the data available to us in req.body
     console.log(req.body);
     db.profile.create(req.body).then(function (user) {
@@ -41,46 +49,15 @@ module.exports = function (app) {
   );
 
   
-    // app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    //   res.json("/feed");
-    // });
+    app.post("/api/login", passport.authenticate("local"), function(req, res) {
+      res.json("/feed");
+    });
 
-  //when user name and password matches we direct user to feed.handlebars
+  // when user name and password matches we direct user to feed.handlebars
 
 
   // when you need to crate an account
-  // app.post("/api/profile", ){
-  //   function createAlbum(albumName) {
-  //     albumName = albumName.trim();
-  //     if (!albumName) {
-  //       return alert('Usernames must contain at least one non-space character.');
-  //     }
-  //     if (albumName.indexOf('/') !== -1) {
-  //       return alert('Usernames cannot contain slashes.');
-  //     }
-  //     var albumKey = encodeURIComponent(albumName) + '/';
-  //     s3.headObject({
-  //       Key: albumKey
-  //     }, function (err, data) {
-  //       if (!err) {
-  //         return alert('Username already exists.');
-  //       }
-  //       if (err.code !== 'NotFound') {
-  //         return alert('There was an error: ' + err.message);
-  //       }
-  //       s3.putObject({
-  //         Key: albumKey
-  //       }, function (err, data) {
-  //         if (err) {
-  //           return alert('There was an error: ' + err.message);
-  //         }
-  //         alert('Successfully created account.');
-  //       });
-  //     });
-  // }
-  
-  
-  
-  // }
-
+  app.post("/api/profile", ){
+    
+  }
 };
