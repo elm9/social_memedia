@@ -1,0 +1,6 @@
+// user.js
+// ...
+User.associate = function(models) {
+  User.hasMany(models.Task);
+}
+// ...
