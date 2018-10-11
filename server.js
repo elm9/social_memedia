@@ -69,6 +69,7 @@ app.engine("handlebars", exphbs({
   defaultLayout: "main"
 }));
 app.set("view engine", "handlebars");
+app.set('views', __dirname + '/views');
 
 // Routes
 // =============================================================
@@ -79,7 +80,7 @@ require("./routes/html_routes.js")(app);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync().then(function () {
-  app.listen(process.env.PORT || 8080, function(){
+  app.listen(process.env.PORT || 8080, function () {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
   });
 });
