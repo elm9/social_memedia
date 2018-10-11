@@ -14,7 +14,7 @@ module.exports = function (app) {
 
   // index route loads create.html
   app.get("/", function (req, res) {
-    res.render("index", {});
+    res.render(path.join(__dirname, "../views/index"));
   });
 
   // app.get("/register", function (req, res) {
