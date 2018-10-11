@@ -1,6 +1,10 @@
 {
   "name": "social_memedia",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.8.0",
+    "npm": "6.2.0"
+  },
   "description": "A full-stack social media app specifically made for sharing memes.",
   "main": "server.js",
   "scripts": {
