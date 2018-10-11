@@ -17,7 +17,7 @@ var document = require("../views");
 module.exports = function (app) {
 
 
-  app.post("/api/login", function (req, res) {
+  app.post("/api/register", function (req, res) {
 
     // Create an Author with the data available to us in req.body
     console.log(req.body);
@@ -39,6 +39,11 @@ module.exports = function (app) {
     })
 
   );
+
+  
+    // app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    //   res.json("/feed");
+    // });
 
   //when user name and password matches we direct user to feed.handlebars
 
