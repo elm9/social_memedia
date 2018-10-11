@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // index route loads create.html
   app.get("/", function(req, res) {
-    res.render(path.join(__dirname, "../views/create.handlebars"));
+    res.render(path.join(__dirname, "../views/index.handlebars"));
   });
 
   app.get("/register", function(req, res) {
