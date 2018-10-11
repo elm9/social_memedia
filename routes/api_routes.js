@@ -23,9 +23,7 @@ module.exports = function (app) {
     console.log(req.body);
     db.profile.create(req.body).then(function (user) {
       res.json(user);
-      
     });
-
     
   });
 
@@ -39,8 +37,6 @@ module.exports = function (app) {
       failureRedirect: '/login',
       failureFlash: true
     })
-
-
 
   );
 
