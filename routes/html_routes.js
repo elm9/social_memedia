@@ -15,21 +15,21 @@ module.exports = function (app) {
   // index route loads create.html
   app.get('/', function (req, res, next) {
     res.render('index', {layout: 'main'});
-});
+  });
 
-  // app.get("/register", function (req, res) {
-  //   res.render(path.join(__dirname, "register"));
-  // });
+  app.get("/register", function (req, res) {
+    res.render(path.join(__dirname, "../views/register.handlebars"));
+  });
 
-  // // cms route loads feed.html
-  // app.get("/feed", function (req, res) {
-  //   res.render(path.join(__dirname, "feed"));
-  // });
+  // cms route loads feed.html
+  app.get("/feed", function (req, res) {
+    res.render(path.join(__dirname, "../views/feed.handlebars"));
+  });
 
-  // // cms route loads feed.html
-  // app.get("/login", function (req, res) {
-  //   res.render(path.join(__dirname, "login"));
-  // });
+  // cms route loads feed.html
+  app.get("/login", function (req, res) {
+    res.render(path.join(__dirname, "../views/login.handlebars"));
+  });
 
   // // blog route loads index.html
   // app.get("/index", function(req, res) {
