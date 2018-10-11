@@ -12,7 +12,7 @@ var session = require("express-session");
 
 // Sets up the PORT
 // =============================================================
-var PORT = process.env.PORT || 8080;
+// var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 
@@ -78,10 +78,8 @@ require("./routes/html_routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({
-  force: true
-}).then(function () {
-  app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
+db.sequelize.sync().then(function () {
+  app.listen(process.env.PORT || 8080, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
   });
 });
