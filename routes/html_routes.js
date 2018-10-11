@@ -13,9 +13,9 @@ module.exports = function (app) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // index route loads create.html
-  app.get("/", function (req, res) {
-    res.render("index");
-  });
+  app.get('/', function (req, res, next) {
+    res.render('index', {layout: 'main'});
+});
 
   // app.get("/register", function (req, res) {
   //   res.render(path.join(__dirname, "register"));
