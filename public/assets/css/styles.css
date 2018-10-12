@@ -417,6 +417,7 @@ button {
     position: fixed;
     bottom: 30px;
     right: 30px;
+    z-index: 1;
 }
 
 .sinsup-button .fas.fa-plus {
