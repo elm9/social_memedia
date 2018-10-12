@@ -6,6 +6,10 @@ html, body {
     color: white;
 }
 
+button {
+    cursor: pointer;
+}
+
 .bg-image {
     height: 100%;
     z-index: 1;
@@ -20,7 +24,7 @@ html, body {
 }
 
 .bg-image.home {
-    background-image: url('../images/home.jpg');
+    background-image: url('./home.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -40,7 +44,7 @@ html, body {
     box-shadow: 3px 3px 10px 1px rgba(60, 60, 60, 0.4);
     padding: 25px 0;
     text-align: center;
-    background-image: url('../images/concrete_wall.png');
+    background-image: url('./concrete_wall.png');
     border-radius: 40px;
 }
 
@@ -90,6 +94,7 @@ html, body {
     right: 0;
     left: 0;
     z-index: 100;
+    text-align: center;
 }
 
 .login {
@@ -166,6 +171,11 @@ html, body {
 .username {
     margin: 15px 0px 10px 15px;
     display: inline-block;
+    color: white;
+}
+
+.username .fas.fa-home {
+    color: white;
 }
 
 .subscribe-button {
@@ -189,10 +199,10 @@ html, body {
 }
 
 .user-hr {
-    margin: 5px 15px;
+    margin: 15px;
     border: none;
     height: 0.5px;
-    background-image: linear-gradient(to right, transparent 0%, #daddd7 10%, #daddd7 90%, transparent 100%)
+    background-image: linear-gradient(to right, transparent 0%, #daddd7 10%, #daddd7 90%, transparent 100%);
 }
 
 .user-stats {
@@ -262,6 +272,7 @@ html, body {
     left: 25px;
     height: 800px;
     max-height: 100%;
+    z-index: 1;
     border: 1px #daddd7 solid;
     text-align: center;
 }
@@ -339,4 +350,65 @@ html, body {
     background-color: #dd2222;
     box-shadow: inset 3px 3px 3px 0 rgba(50,50,50,0.4);
     transition: all 0.2s ease-in-out;
+}
+
+.feed-post {
+    max-width: 75%;
+    border: 1px solid #ff4444;
+    margin: 0 auto;
+}
+
+.feed-post:first-child {
+    margin-top: 40px;
+}
+
+.author, .caption {
+    text-align: left;
+    margin-left: 15px;
+}
+
+.post-pic {
+    max-width: 100%;
+    height: 400px;
+}
+
+.pic-cap-hr {
+    border: 0.5px solid #ff4444;
+}
+
+.user-hr.ff {
+    background-image: linear-gradient(to right, transparent 0%, #ff4444 10%, #ff4444 90%, transparent 100%);
+}
+
+.memebox {
+    width: 50%;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.register {
+    margin-top: 62.5px;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.meme {
+    width: 33.3333333333333%;
+    display: inline-block;
+    margin-bottom: -3.5px;
+}
+
+.container.register-container {
+    margin-top: 200px;
+    border: 1px solid #daddd7;
+}
+
+.login-input.register-input {
+    margin-left: 0;
+}
+
+.login-input.register-input:hover + .bottom-block, .login-input.register-input:focus + .bottom-block, .login-input.register-input:active + .bottom-block {
+    left: 60px;
 }
