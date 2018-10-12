@@ -1,21 +1,42 @@
 <div class="bg-image"></div>
-<div class="container">
-    <div class="side-nav">
-        <a id="username-link" class="link" href="/">
-            <p class="side-nav-item"><span id="username">Username</span></p>
-        </a>
-        <a id="subscribers-link" class="link" href="/">
-            <p class="side-nav-item"><span id="user-subscribers">100</span> Subscribers</p>
-        </a>
-        <a id="subscribers-link" class="link" href="/">
-            <p class="side-nav-item"><span id="user-subscriptions">67</span> Subscriptions</p>
-        </a>
-        <p class="side-nav-item"><span id="user-memepoints">73</span> M.P.</p>
-        <p class="side-nav-item"><span id="user-postcount">4</span> Posts</p>
-        <form class="side-nav-item side-nav-search">
-            <input type="text" class="search-bar" placeholder="Search here..." /><button type="submit" class="search-submit"><i
-                    class="fas fa-search"></i></button>
-        </form>
+<div class="side-nav">
+    <a id="username-link" class="link" href="/">
+        <p class="side-nav-item"><span id="username">Username</span></p>
+    </a>
+    <a id="subscribers-link" class="link" href="/">
+        <p class="side-nav-item"><span id="user-subscribers">{{ subscribers }}</span> Subscribers</p>
+    </a>
+    <a id="subscribers-link" class="link" href="/">
+        <p class="side-nav-item"><span id="user-subscriptions">{{ subscriptions }}</span> Subscriptions</p>
+    </a>
+    <p class="side-nav-item"><span id="user-memepoints">{{ mpcount }}</span> M.P.</p>
+    <p class="side-nav-item"><span id="user-postcount">{{ postcount }}</span> Posts</p>
+    <form class="side-nav-item side-nav-search">
+        <input type="text" class="search-bar" placeholder="Search here..." /><button type="submit" class="search-submit"><i
+                class="fas fa-search"></i></button>
+    </form>
+    <form action="/logout" method="GET">
         <button class="side-nav-item logout-button">Log Out</button>
+    </form>
+</div>
+<div class="addmeme">
+    <a href="/create"><button class="sinsup-button">Add Meme <i class="fas fa-plus"></i></button></a>
+</div>
+<div class="container">
+    <div id="post" class="feed-post">
+        <h3 id="post-author" class="author">@Author Here</h3>
+        <hr class="ff user-hr" />
+        <img id="post-pic" class="post-pic" src="/assets/images/concrete_wall.png" />
+        <hr class="pic-cap-hr" />
+        <p id="post-caption" class="caption">This is the post caption.</p>
     </div>
+    {{#each memes}}
+    <div id="post" class="feed-post">
+        <h3 id="post-author" class="author">{{ author }}</h3>
+        <hr class="ff user-hr" />
+        <img id="post-pic" class="post-pic" src="{{ postpicture }}" />
+        <hr class="pic-cap-hr" />
+        <p id="post-caption" class="caption">{{ postcaption }}</p>
+    </div>
+    {{/each}}
 </div>
