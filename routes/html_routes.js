@@ -40,6 +40,12 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/create", function (req, res) {
+    res.render(path.join(__dirname, "../views/create"), {
+      title: "Social Memedia - Create Meme"
+    });
+  });
+
   // // blog route loads index.html
   // app.get("/index", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../view/index.html"));
