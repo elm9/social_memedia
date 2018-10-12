@@ -1,14 +1,11 @@
 <div class="bg-image"></div>
 <div class="container">
-    <h2 id="username" class="username"><a href="./feed"><i class="fas fa-home"></i></a> | Username Here</h2>
+    <h2 id="username" class="username"><a href="/feed"><i class="fas fa-home"></i></a> | Username Here</h2>
     <button id="subscribe" class="subscribe-button">Subscribe</button>
     <hr class="user-hr" />
     <div class="user-stats">
-        <p class="user-stat"><span id="user-memepoints">929</span> Meme Points</p>
-        <p class="user-stat"><span id="user-postcount">3</span> Posts</p>
-        <!--<p class="user-stat"><span id="user-subscribers">55</span> Subscribers</p
-            ><p class="user-stat"><span id="user-subscriptions">32</span> Subscriptions</p
-            >-->
+        <p class="user-stat"><span id="user-memepoints">{{ memepoints }}</span> Meme Points</p>
+        <p class="user-stat"><span id="user-postcount">{{ postcount }}</span> Posts</p>
         <p class="user-stat">Sort By &nbsp; <button id="sort-recent" class="user-sort">Recent</button><button id="sort-popular"
                 class="user-sort">Popular</button></p>
     </div>
@@ -18,7 +15,8 @@
     </div>
     {{#each posts}}
     <div class="user-post">
-        <img class="post-image" alt="meme picture" src="{{ postpicture }}" />
+        <img class="post-image" alt="{{ username }}'s Meme" src="{{ postpicture }}" />
         <p class="post-caption">{{ postcaption }}</p>
     </div>
+    {{/each}}
 </div>
