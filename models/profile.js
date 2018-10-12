@@ -2,12 +2,6 @@ var bcrypt = require("bcrypt-nodejs")
 
 module.exports = function (sequelize, DataTypes) {
     var Profile = sequelize.define("profile", {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-
-        },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,8 +23,8 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Profile.prototype.validPassword = function (password) {
-        console.log(password);
-        console.log(this.password);
+        // console.log(password);
+        // console.log(this.password);
         return bcrypt.compareSync(password, this.password);
     };
 

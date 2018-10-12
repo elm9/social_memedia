@@ -24,8 +24,8 @@ $(document).ready(function() {
         username: username,
         password: password
       }).then(function(data) {
-        console.log(data);
-        // window.location.replace(data);
+
+        window.location.replace(data);
       }).catch(function(err) {
         console.log(err);
       });
