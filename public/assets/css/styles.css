@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -40,7 +41,7 @@ button {
 
 .sinsup {
     width: 450px;
-    margin:  0 auto;
+    margin: 0 auto;
     box-shadow: 3px 3px 10px 1px rgba(60, 60, 60, 0.4);
     padding: 25px 0;
     text-align: center;
@@ -74,9 +75,10 @@ button {
     margin-bottom: 25px;
 }
 
-.sinsup-button:hover, .sinsup-button:focus {
+.sinsup-button:hover,
+.sinsup-button:focus {
     background-color: #dd2222;
-    box-shadow: inset 3px 3px 3px 0 rgba(50,50,50,0.4);
+    box-shadow: inset 3px 3px 3px 0 rgba(50, 50, 50, 0.4);
     outline: none;
     transition: all 0.2s ease-in-out;
 }
@@ -128,7 +130,6 @@ button {
     font-size: 24px;
     border: none;
     line-height: 24px;
-    margin-left: 30px;
     outline: none;
     color: white;
     padding: 10px 10px 0 10px;
@@ -142,27 +143,28 @@ button {
 
 .bottom-block {
     height: 2px;
-    display: inline-block;
+    display: block;
     width: 0;
-    position: absolute;
-    top: 37px;
-    left: 214px;
+    margin: 0 auto;
     background-image: linear-gradient(to right, white 50%, #dd2222 50%);
     background-size: 200% 100%;
 }
 
-.login-input:hover, .login-input:focus, .login-input-focus:active {
-    background-color: rgba(255,255,255,0.1);
+.login-input:hover,
+.login-input:focus,
+.login-input-focus:active {
+    background-color: rgba(255, 255, 255, 0.1);
     outline: none;
     transition: background-color 0.2s ease-in-out;
 }
 
-.login-input:hover + .bottom-block {
+.login-input:hover+.bottom-block {
     width: 319px;
     transition: width 0.2s ease-in-out;
 }
 
-.login-input:focus + .bottom-block, .login-input:active + .bottom-block {
+.login-input:focus+.bottom-block,
+.login-input:active+.bottom-block {
     width: 319px;
     background-position: -100% 0%;
     transition: background-position 0.2s ease-in-out;
@@ -191,7 +193,9 @@ button {
     border-radius: 10px;
 }
 
-.subscribe-button:hover, .subscribe-button:focus, .subscribe-button:active {
+.subscribe-button:hover,
+.subscribe-button:focus,
+.subscribe-button:active {
     transition: all 0.2s ease-in-out;
     background-color: #dd2222;
     box-shadow: inset 3px 3px 3px 0 rgba(50, 50, 50, 0.4);
@@ -245,10 +249,12 @@ button {
     padding: 8px;
 }
 
-.user-sort:hover, .user-sort:focus, .user-sort:active {
+.user-sort:hover,
+.user-sort:focus,
+.user-sort:active {
     background-color: #dd2222;
     outline: none;
-    box-shadow: inset 3px 3px 3px 0 rgba(50,50,50,0.4);
+    box-shadow: inset 3px 3px 3px 0 rgba(50, 50, 50, 0.4);
     transition: all 0.2s ease-in-out;
 }
 
@@ -273,6 +279,7 @@ button {
     height: 800px;
     max-height: 100%;
     z-index: 1;
+    background-color: #222;
     border: 1px #daddd7 solid;
     text-align: center;
 }
@@ -313,21 +320,27 @@ button {
     border: none;
 }
 
-.search-bar:hover, .search-bar:focus, .search-bar:active {
+.search-bar:hover,
+.search-bar:focus,
+.search-bar:active {
     outline: none;
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     border-color: #ff4444;
     transition: all 0.1s ease-in-out;
 }
 
-.search-bar:hover + .search-submit, .search-bar:focus + .search-submit, .search-bar:active + .search-submit {
+.search-bar:hover+.search-submit,
+.search-bar:focus+.search-submit,
+.search-bar:active+.search-submit {
     background-color: #ff4444;
     color: #daddd7;
     outline: none;
     transition: all 0.1s ease-in-out;
 }
 
-.search-bar:focus + .search-submit:hover, .search-bar:focus + .search-submit:focus, .search-bar:focus + .search-submit:active {
+.search-bar:focus+.search-submit:hover,
+.search-bar:focus+.search-submit:focus,
+.search-bar:focus+.search-submit:active {
     background-color: #dd2222;
     color: #daddd7;
     outline: none;
@@ -348,7 +361,7 @@ button {
 
 .side-nav-item.logout-button:hover {
     background-color: #dd2222;
-    box-shadow: inset 3px 3px 3px 0 rgba(50,50,50,0.4);
+    box-shadow: inset 3px 3px 3px 0 rgba(50, 50, 50, 0.4);
     transition: all 0.2s ease-in-out;
 }
 
@@ -362,7 +375,8 @@ button {
     margin-top: 40px;
 }
 
-.author, .caption {
+.author,
+.caption {
     text-align: left;
     margin-left: 15px;
 }
@@ -409,17 +423,45 @@ button {
     margin-left: 0;
 }
 
-.login-input.register-input:hover + .bottom-block, .login-input.register-input:focus + .bottom-block, .login-input.register-input:active + .bottom-block {
+.login-input.register-input:hover+.bottom-block,
+.login-input.register-input:focus+.bottom-block,
+.login-input.register-input:active+.bottom-block {
     left: 60px;
 }
 
 .addmeme {
     position: fixed;
-    bottom: 30px;
+    bottom: 5px;
     right: 30px;
     z-index: 1;
 }
 
-.sinsup-button .fas.fa-plus {
-    color: white;
+@media screen and (max-width: 700px) {
+    .memebox {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .register {
+        display: inline-block;
+        width: 100%;
+        margin-top: none;
+    }
+
+    .bottom-block {
+        left: 152px;
+    }
+
+    .form-group .login-input:hover+.bottom-block,
+    .form-group .login-input:focus+.bottom-block,
+    .form-group .login-input:active+.bottom-block {
+        left: 152px;
+    }
+
+}
+
+@media screen and (max-width: 1270px) {
+    .side-nav {
+        display: none;
+    }
 }
