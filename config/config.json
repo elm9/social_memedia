@@ -9,14 +9,14 @@
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
+    "database": "memedia",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "database_production",
+    "database": "memedia",
     "host": "127.0.0.1",
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
