@@ -30,7 +30,12 @@ module.exports = function (app) {
     // Create an Author with the data available to us in req.body
     console.log(req.body);
     db.profile.create(req.body).then(function (user) {
-      res.json(user);
+      // res.json(user);
+
+      req.login(user, function(err) {
+        if (err) { return next(err); }
+        return res.redirect('/feed');
+      });
 
     });
 
