@@ -29,7 +29,8 @@ module.exports = function (app) {
   // cms route loads feed.html
   app.get("/feed", isMemed, function (req, res) {
     res.render(path.join(__dirname, "../views/feed"), {
-      title: "Social Memedia - Feed"
+      title: "Social Memedia - Feed",
+      username: req.user.username
     });
   });
 
@@ -43,6 +44,20 @@ module.exports = function (app) {
   app.get("/create", function (req, res) {
     res.render(path.join(__dirname, "../views/create"), {
       title: "Social Memedia - Create Meme"
+    });
+  });
+
+  app.get("/profile/:username", function (req, res) {
+    db.profile.findOne({
+      username: req.params.username
+    }).then(function (data) {
+      res.render(path.join(__dirname, "../views/profile"), {
+        title: "Social Memedia - " + req.params.username + "'s Profile",
+        posts: data.posts,
+        memepoints: data.memepoints,
+        postcount: data.postcount,
+        username: req.params.username
+      })
     });
   });
 
