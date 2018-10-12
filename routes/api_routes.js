@@ -37,7 +37,13 @@ module.exports = function (app) {
 
   });
 
-
+  app.get("/profile/:username", function (req, res) {
+    db.profile.findOne({
+      username: req.params.username
+    }).then(function (data) {
+      res.json(data);
+    });
+  });
 
 
   // app.post("/api/login", passport.authenticate('local', {
