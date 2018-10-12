@@ -5,6 +5,7 @@
 // Dependencies
 // =============================================================
 var path = require("path");
+var isMemed = require('../config/middleware/isMemed.js');
 
 // Routes
 // =============================================================
@@ -14,21 +15,21 @@ module.exports = function(app) {
 
   // index route loads create.html
   app.get("/", function(req, res) {
-    res.render(path.join(__dirname, "../views/index.handlebars"));
+    res.render(path.join(__dirname, "../views/index"));
   });
 
   app.get("/register", function(req, res) {
-    res.render(path.join(__dirname, "../views/register.handlebars"));
+    res.render(path.join(__dirname, "../views/register"));
   });
 
   // cms route loads feed.html
-  app.get("/feed", function(req, res) {
-    res.render(path.join(__dirname, "../views/feed.handlebars"));
+  app.get("/feed", isMemed, function(req, res) {
+    res.render(path.join(__dirname, "../views/feed"));
   });
 
     // cms route loads feed.html
     app.get("/login", function(req, res) {
-      res.render(path.join(__dirname, "../views/login.handlebars"));
+      res.render(path.join(__dirname, "../views/login"));
     });
 
   // // blog route loads index.html

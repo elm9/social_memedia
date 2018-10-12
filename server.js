@@ -27,10 +27,10 @@ var app = express();
 const AWS = require("aws-sdk");
 const S3_BUCKET = process.env.S3_BUCKET;
 
-var credentials = new AWS.SharedIniFileCredentials({
-  profile: 'default'
-});
-AWS.config.credentials = credentials;
+// var credentials = new AWS.SharedIniFileCredentials({
+//   profile: 'default'
+// });
+// AWS.config.credentials = credentials;
 // Set the region 
 AWS.config.update({
   region: 'us-east-1'
@@ -78,9 +78,7 @@ require("./routes/html_routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({
-  force: true
-}).then(function () {
+db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
