@@ -44,7 +44,7 @@ button {
     box-shadow: 3px 3px 10px 1px rgba(60, 60, 60, 0.4);
     padding: 25px 0;
     text-align: center;
-    background-image: url('./concrete_wall.png');
+    background-image: url('/assets/images/concrete_wall.png');
     border-radius: 40px;
 }
 
