@@ -412,3 +412,13 @@ button {
 .login-input.register-input:hover + .bottom-block, .login-input.register-input:focus + .bottom-block, .login-input.register-input:active + .bottom-block {
     left: 60px;
 }
+
+.addmeme {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+
+.sinsup-button .fas.fa-plus {
+    color: white;
+}
