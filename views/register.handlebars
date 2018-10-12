@@ -1,21 +1,27 @@
-<h1>Create an account</h1>
-
-<h2>Explore Dank Memes</h2>
-
-<form action="/api/register" method="POST" class="register-form">
-
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email">
+<div class="bg-image"></div>
+    <div class="container register-container">
+        <div class="memebox">
+            <img class="meme" alt="meme 1" src="./meme1.png" /><img class="meme" alt="meme 2" src="./meme2.jpeg" /><img class="meme" alt="meme 3" src="./meme3.jpg" /><img class="meme" alt="meme 4" src="./meme4.jpeg" /><img class="meme" alt="meme 5" src="./meme5.jpg" /><img class="meme" alt="meme 6" src="./meme6.jpg" /><img class="meme" alt="meme 7" src="./meme7.jpg" /><img class="meme" alt="meme 8" src="./meme8.jpg" /><img class="meme" alt="meme 9" src="./meme9.jpg" />
+        </div
+        ><div class="register">
+            <form action="/api/register" method="POST" class="register-form">
+                <div class="form-group">
+                    <input type="text" class="login-input register-input" id="username" placeholder="Enter Username" required autocomplete="off" />
+                    <div class="bottom-block"></div>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="login-input register-input" id="email" placeholder="Enter Email" required autocomplete="off" />
+                    <div class="bottom-block"></div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="login-input register-input" id="password" placeholder="Enter Password" required autocomplete="off" />
+                    <div class="bottom-block"></div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="login-input register-input" id="password-verify" placeholder="Confirm Password" required autocomplete="off" />
+                    <div class="bottom-block"></div>
+                </div>
+                <button type="submit" class="sinsup-button">Submit</button>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="username">UserName:</label>
-        <input type="text" id="username" name="username">
-    </div>
-    <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="password">
-    </div>
-
-    <button type="submit">Create User</button>
-</form>
