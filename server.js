@@ -9,17 +9,8 @@ var exphbs = require("express-handlebars");
 var passport = require("./config/passport");
 var bodyParser = require("body-parser");
 var session = require("express-session");
-
-// Sets up the PORT
-// =============================================================
-// var PORT = process.env.PORT || 8080;
-
-// Requiring our models for syncing
-
-var db = require("./models");
-//Set up the Express App
-var app = express();
-
+const busboy = require('connect-busboy');
+const busboyBodyParser = require('busboy-body-parser');
 
 // sets up AWS s3 and console.log bucket
 // =============================================================
@@ -44,11 +35,22 @@ s3.listBuckets(function (err, data) {
 });
 // =============================================================
 
+// Requiring our models for syncing
+
+var db = require("./models");
+//Set up the Express App
+var app = express();
+app.use(busboy());
+
+
+
+
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({
   extended: true
 }));
 app.use(express.json());
+app.use(busboyBodyParser());
 
 // Static directory
 app.use(express.static("public"));
