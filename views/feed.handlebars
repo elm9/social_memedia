@@ -1,14 +1,11 @@
 <div class="bg-image"></div>
+
 <div class="side-nav">
-    <a id="username-link" class="link" href="/">
-        <p class="side-nav-item"><span id="username">Username</span></p>
+    <a id="username-link" class="link" href="/profile/{{ username }}">
+        <p class="side-nav-item"><span id="username">{{ username }}</span></p>
     </a>
-    <a id="subscribers-link" class="link" href="/">
-        <p class="side-nav-item"><span id="user-subscribers">{{ subscribers }}</span> Subscribers</p>
-    </a>
-    <a id="subscribers-link" class="link" href="/">
-        <p class="side-nav-item"><span id="user-subscriptions">{{ subscriptions }}</span> Subscriptions</p>
-    </a>
+    <p class="side-nav-item"><span id="user-subscribers">{{ subscribers }}</span> Subscribers</p>
+    <p class="side-nav-item"><span id="user-subscriptions">{{ subscriptions }}</span> Subscriptions</p>
     <p class="side-nav-item"><span id="user-memepoints">{{ mpcount }}</span> M.P.</p>
     <p class="side-nav-item"><span id="user-postcount">{{ postcount }}</span> Posts</p>
     <form class="side-nav-item side-nav-search">
