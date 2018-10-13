@@ -8,6 +8,10 @@ const bucketRegion = 'us-east-1';
 AWS.config.update({
   region: bucketRegion
 });
+AWS.config.apiVersions = {
+  s3: '2006-03-01',
+};
+
 const s3 = new AWS.S3();
 
 module.exports = function (app) {
@@ -52,42 +56,84 @@ module.exports = function (app) {
     res.redirect("/");
   });
 
-
+  
   // upload image to S3
   app.post("/api/upload", function (req, res) {
-    const imageUpload = (req.body.imageUpload);
-    var busboy = new Busboy({
-      headers: req.headers
-    });
-    busboy.on('finish', function () {
-      console.log('Upload finished');
-      console.log(file);
-      uploadToS3(file);
-    });
-    // req.pipe(busboy);
-  });
-
-
-  function uploadToS3(file) {
-    // console.log(req.body);
-
-    let folder = (req.user.username + "/")
+    const folder = (req.user.username + "/")
     console.log("Folder name: " + folder);
-    let params = {
+    const file = (req.body.imageUpload);
+    console.log("File: " + file);
+    const params = {
       Bucket: bucketName,
-      Key: folder,
+      Key: (folder + file),
       ACL: 'public-read',
-      Body: file.data
+      Body: file
     };
 
-    s3.upload(params, function (err, data) {
+    s3.putObject(params, function (err, data) {
       if (err) {
         console.log("Error: ", err);
       } else {
-        console.log("Successfully created a folder on S3");
         console.log(data);
       }
     });
-    // res.redirect("/feed");
-  }
-};
+    res.redirect("/feed");
+  });
+}
+    
+    // const file = (req.body.imageUpload);
+    // const busboy = new Busboy({
+    //   headers: req.headers
+    // });
+    // busboy.on('finish', function () {
+    //   console.log('Upload finished');
+    //   console.log(file);
+    //   uploadToS3(file);
+    // });
+    // req.pipe(busboy);
+  // });
+
+
+//   function uploadToS3(file) {
+//     // console.log(req.body);
+
+//     const folder = (req.user.username + "/")
+//     console.log("Folder name: " + folder);
+//     const params = {
+//       Bucket: bucketName,
+//       Key: folder,
+//       ACL: 'public-read',
+//       Body: stream
+//     };
+
+//     s3.upload(params, function (err, data) {
+//       if (err) {
+//         console.log("Error: ", err);
+//       } else {
+//         console.log("Successfully created a folder on S3");
+        
+//       }
+//     });
+//     // res.redirect("/feed");
+//   }
+// };
+
+
+// this is the stuff that works
+    // const folder = (req.user.username + "/")
+    // console.log("Folder name: " + folder);
+    // const params = {
+    //   Bucket: bucketName,
+    //   Key: folder,
+    //   ACL: 'public-read',
+    //   Body: stream
+    // };
+
+    // s3.upload(params, function (err, data) {
+    //   if (err) {
+    //     console.log("Error: ", err);
+    //   } else {
+    //     console.log("Successfully created a folder on S3");
+        
+    //   }
+    // });
