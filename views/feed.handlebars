@@ -1,6 +1,6 @@
 <div class="bg-image"></div>
 
-<div class="side-nav">
+<div id="side-nav" class="side-nav">
     <a id="username-link" class="link" href="/profile/{{ username }}">
         <p class="side-nav-item"><span id="username">{{ username }}</span></p>
     </a>
@@ -16,10 +16,11 @@
         <button class="side-nav-item logout-button">Log Out</button>
     </form>
 </div>
+<button id="side-nav-toggle" class="sinsup-button" type="button">☰</button>
 <div class="addmeme">
     <a href="/create"><button class="sinsup-button">Add Meme <i class="fas fa-plus"></i></button></a>
 </div>
-<div class="container">
+<div id="container" class="container">
     <div id="post" class="feed-post">
         <h3 id="post-author" class="author">@Author Here</h3>
         <hr class="ff user-hr" />
