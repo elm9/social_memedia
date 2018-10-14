@@ -38,6 +38,14 @@ module.exports = function (app) {
 
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
     res.json("/feed");
+    let params = {
+      Bucket: bucketName
+    };
+    s3.getBucketWebsite(params, function(err, data) {
+      if (err) console.log(err, err.stack);
+      else console.log (data);
+    
+    });
   });
 
 
@@ -63,7 +71,7 @@ module.exports = function (app) {
   app.post("/api/upload", function (req, res) {
     const folder = (req.user.username + "/");
     const file = (req.body.imageUpload);
-    const params = {
+    let params = {
       Bucket: bucketName,
       Key: (folder + file),
       ACL: 'public-read',
@@ -80,6 +88,28 @@ module.exports = function (app) {
         console.log(data);
       }
     });
+    
     res.redirect("/feed");
+  })
+
+  // post images to feed
+  app.get("/api/feed", function(req, res) {
+    let params = {
+      Bucket: bucketName,
+      EncodingType: url
+    };
+    s3.listObjectsV2(params, function(err, data) {
+      if (err) console.log("Error: " + err);
+      else console.log ("Feed " + data);
+    });
   });
 }
+  // // post images to profile
+  // app.get("/api/profile", function(req, res) {
+  //   const folder = (req.user.username + "/");
+  //   let params = {
+  //     Bucket: bucketName,
+  //     Prefix: folder
+  //   };
+  // });
+
