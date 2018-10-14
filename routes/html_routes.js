@@ -6,6 +6,7 @@
 // =============================================================
 var path = require("path");
 var isMemed = require('../config/middleware/isMemed.js');
+const db = require("../models");
 
 // Routes
 // =============================================================
