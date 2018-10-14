@@ -274,10 +274,10 @@ button {
 
 .side-nav {
     position: fixed;
-    top: 50px;
-    left: 25px;
+    top: 0;
+    left: 0;
     height: 800px;
-    max-height: 100%;
+    max-height: calc(100% - 2px);
     z-index: 1;
     background-color: #222;
     border: 1px #daddd7 solid;
@@ -460,8 +460,35 @@ button {
 
 }
 
+#side-nav-toggle {
+    display: none;
+    position: fixed;
+    width: auto;
+    padding: 5px 10px;
+    font-size: 24px;
+    margin: 0;
+}
+
 @media screen and (max-width: 1270px) {
     .side-nav {
         display: none;
+    }
+    
+    #side-nav-toggle {
+        display: inline-block;
+        z-index: 1;
+    }
+    
+    #side-nav-toggle.toggled {
+        left: 242.34px;
+    }
+    
+    .side-nav.open {
+        display: inline-block;
+    }
+    
+    .container.side-open {
+        margin-right: 0;
+        transition: margin-right 0.2s ease-in-out;
     }
 }
