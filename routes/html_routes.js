@@ -6,13 +6,9 @@
 // =============================================================
 var path = require("path");
 var isMemed = require('../config/middleware/isMemed.js');
-<<<<<<< HEAD
-const db = require("../models");
-=======
 const AWS = require("aws-sdk");
 const bucketName = 'socialmemedia';
 
->>>>>>> 8528627ca39b69c98fab977606a9aa64145e5c86
 
 // Routes
 // =============================================================
