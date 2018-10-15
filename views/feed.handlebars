@@ -20,14 +20,14 @@
 <div class="addmeme">
     <a href="/create"><button class="sinsup-button">Add Meme <i class="fas fa-plus"></i></button></a>
 </div>
-<div id="container" class="container">
-    <div id="post" class="feed-post">
+<div class="container">
+    {{!-- <div id="post" class="feed-post">
         <h3 id="post-author" class="author">@Author Here</h3>
         <hr class="ff user-hr" />
         <img id="post-pic" class="post-pic" src="/assets/images/concrete_wall.png" />
         <hr class="pic-cap-hr" />
         <p id="post-caption" class="caption">This is the post caption.</p>
-    </div>
+    </div> --}}
     {{#each memes}}
     <div id="post" class="feed-post">
         <h3 id="post-author" class="author">{{ author }}</h3>

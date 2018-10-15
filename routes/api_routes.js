@@ -1,6 +1,6 @@
 const db = require("../models");
 const passport = require("../config/passport");
-
+var isMemed = require('../config/middleware/isMemed.js');
 // ===============================================
 const AWS = require("aws-sdk");
 const Busboy = require('busboy');
@@ -38,6 +38,14 @@ module.exports = function (app) {
 
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
     res.json("/feed");
+    let params = {
+      Bucket: bucketName
+    };
+    s3.getBucketWebsite(params, function(err, data) {
+      if (err) console.log(err, err.stack);
+      else console.log (data);
+    
+    });
   });
 
 
@@ -62,15 +70,17 @@ module.exports = function (app) {
   // upload image to S3
   app.post("/api/upload", function (req, res) {
     const folder = (req.user.username + "/");
-    const file = (req.body.imageUpload);
-    const params = {
+    var data = req.body;
+    res.json(data);
+    console.log("api_routes req.body.file: " + data);
+    let params = {
       Bucket: bucketName,
-      Key: (folder + file),
+      Key: (folder + data),
       ACL: 'public-read',
-      Body: file
+      Body: data
     };
+    console.log("Body: " + req.body);
     console.log("Folder name: " + folder);
-    console.log("File: " + file);
     
     // uploads image in folder in bucket
     s3.putObject(params, function (err, data) {
@@ -79,7 +89,9 @@ module.exports = function (app) {
       } else {
         console.log(data);
       }
-    });
+    }); 
     res.redirect("/feed");
-  });
+  })
 }
+
+

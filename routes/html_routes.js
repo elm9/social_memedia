@@ -6,7 +6,13 @@
 // =============================================================
 var path = require("path");
 var isMemed = require('../config/middleware/isMemed.js');
+<<<<<<< HEAD
 const db = require("../models");
+=======
+const AWS = require("aws-sdk");
+const bucketName = 'socialmemedia';
+
+>>>>>>> 8528627ca39b69c98fab977606a9aa64145e5c86
 
 // Routes
 // =============================================================
@@ -27,13 +33,65 @@ module.exports = function (app) {
     });
   });
 
-  // cms route loads feed.html
+   // post images to feed
+  //  app.get("/feed", isMemed, function (req, res) {
+  //   let params = {
+  //     Bucket: "socialmemedia",
+  //     MaxKeys: 100
+  //   };
+  //   s3.listObjectsV2(params, function(err, data) {
+  //     if (err) console.log(err, err.stack);
+  //     else console.log(data);
+  //   });
+  //   res.render(path.join(__dirname, "../views/feed"), {
+  //     title: "Social Memedia - Feed",
+  //     username: req.user.username,
+  //     subscribers: req.user.subscribers,
+  //     subscriptions: req.user.subscriptions,
+  //     mpcount: req.user.mpcount,
+  //     postcount: req.user.postcount
+  //   });
+    
+  // });
+  // ===================================================
   app.get("/feed", isMemed, function (req, res) {
-    res.render(path.join(__dirname, "../views/feed"), {
-      title: "Social Memedia - Feed",
-      username: req.user.username
+    var memes = [];
+    var params = {
+     Bucket: "socialmemedia",
+     MaxKeys: 100
+    };
+    s3.listObjectsV2(params, function (err, data) {
+     if (err) console.log(err, err.stack);
+     console.log(data);
+     console.log(data.Contents[0]);
+     var href = this.request.httpRequest.endpoint.href;
+     
+     var memeCount = data.Contents.length;
+     for (var i in data.Contents) {
+      var authorString = data.Contents[i].Key;
+      var author = authorString.split("/");
+      var bucketUrl = href + bucketName + '/';
+      var meme = {
+       postpicture: bucketUrl + data.Contents[i].Key,
+       author: author[0],
+       postcaption: "Captions don't exist just yet, but this is meme #" + i + " lol."
+      };
+      memes.push(meme);
+      memeCount--;
+      if (memeCount == 0) {
+       res.render(path.join(__dirname, "../views/feed"), {
+        title: "Social Memedia - Feed",
+        username: req.user.username,
+        subscribers: req.user.subscribers,
+        subscriptions: req.user.subscriptions,
+        mpcount: req.user.mpcount,
+        postcount: req.user.postcount,
+        memes: memes
+       });
+      }
+     }
     });
-  });
+   });
 
   // cms route loads feed.html
   app.get("/login", function (req, res) {
