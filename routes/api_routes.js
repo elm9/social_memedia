@@ -1,6 +1,6 @@
 const db = require("../models");
 const passport = require("../config/passport");
-
+var isMemed = require('../config/middleware/isMemed.js');
 // ===============================================
 const AWS = require("aws-sdk");
 const Busboy = require('busboy');
@@ -70,15 +70,17 @@ module.exports = function (app) {
   // upload image to S3
   app.post("/api/upload", function (req, res) {
     const folder = (req.user.username + "/");
-    const file = (req.body.imageUpload);
+    var data = req.body;
+    res.json(data);
+    console.log("api_routes req.body.file: " + data);
     let params = {
       Bucket: bucketName,
-      Key: (folder + file),
+      Key: (folder + data),
       ACL: 'public-read',
-      Body: file
+      Body: data
     };
+    console.log("Body: " + req.body);
     console.log("Folder name: " + folder);
-    console.log("File: " + file);
     
     // uploads image in folder in bucket
     s3.putObject(params, function (err, data) {
@@ -87,29 +89,9 @@ module.exports = function (app) {
       } else {
         console.log(data);
       }
-    });
-    
+    }); 
     res.redirect("/feed");
   })
-
-  // post images to feed
-  app.get("/api/feed", function(req, res) {
-    let params = {
-      Bucket: bucketName,
-      EncodingType: url
-    };
-    s3.listObjectsV2(params, function(err, data) {
-      if (err) console.log("Error: " + err);
-      else console.log ("Feed " + data);
-    });
-  });
 }
-  // // post images to profile
-  // app.get("/api/profile", function(req, res) {
-  //   const folder = (req.user.username + "/");
-  //   let params = {
-  //     Bucket: bucketName,
-  //     Prefix: folder
-  //   };
-  // });
+
 
